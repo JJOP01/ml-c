@@ -8,39 +8,42 @@ float sigmoidf(float x)
   return 1.f / (1.f + exp(-x));
 }
 
+typedef float sample[3];
+
 // OR-gate
-float train1[][3] = {
+sample or_train[] = {
   {0, 0, 0},
   {1, 0, 1},
   {0, 1, 1},
-  {1, 1, 1}
+  {1, 1, 1},
 };
 
 // AND-gate
-float train2[][3] = {
+sample and_train[] = {
   {0, 0, 0},
   {1, 0, 0},
   {0, 1, 0},
-  {1, 1, 1}
+  {1, 1, 1},
 };
 
 // NAND-gate
-float train3[][3] = {
+sample nand_train[] = {
   {0, 0, 1},
   {1, 0, 1},
   {0, 1, 1},
-  {1, 1, 0}
+  {1, 1, 0},
 };
 
 // XOR-gate
-float train[][3] = {
+sample xor_train[] = {
   {0, 0, 0},
   {1, 0, 1},
   {0, 1, 1},
-  {1, 1, 0}
+  {1, 1, 0},
 };
 
-#define train_count sizeof(train)/sizeof(train[0])
+sample *train = nand_train;
+size_t train_count = 4;
 
 float rand_float()
 {

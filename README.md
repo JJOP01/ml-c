@@ -1,6 +1,6 @@
 # Machine Learning in C
 
-It will not always be exactly what you want. Machine learning is like asking a genie to grant you wishes, if you fucked up a small detail in the description of your wish... the genie is going to fuck you. Machine learning algorithms are like genies.
+It will not always be exactly what you want. Machine learning is like asking a genie to grant you wishes, if you fucked up a small detail in the description of your wish... the genie is going to fuck you. Machine Learning algorithms are like genies. Run shell script `./build.sh` to generate the object executable files `double` and `gates`.  
 
 ### What is Machine Learning?
 
