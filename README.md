@@ -1,6 +1,17 @@
 # Machine Learning in C
 
-It will not always be exactly what you want. Machine learning is like asking a genie to grant you wishes, if you fucked up a small detail in the description of your wish... the genie is going to fuck you. Machine Learning algorithms are like genies. Run shell script `./build.sh` to generate the object executable files `double` and `gates`.  
+It will not always be exactly what you want. Machine learning is like asking a genie to grant you wishes, if you fucked up a small detail in the description of your wish... the genie is going to fuck you. Machine Learning algorithms are like genies. 
+
+### Quick Start
+
+```console
+$ ./build.sh
++ clang -Wall -Wextra -o double double.c -lm
++ clang -Wall -Wextra -o gates gates.c -lm
++ clang -Wall -Wextra -o xor xor.c -lm
+```
+
+Run shell script `./build.sh` to generate the object executable files `double`, `gates`, and `xor`.
 
 ### What is Machine Learning?
 
@@ -8,7 +19,7 @@ In imperative and functional programming, you achieve a goal by writing explicit
 
 You provide this untrained model, along with its behavioural description, to a learning process. This process adjusts the parameters until the model aligns well with the given description. The intial description might lead to flawed or unexpected outcomes, but the learning process will modify the model to match the description (with a certain probability), resulting in a model that performs according to the intended behaviour.
 
-### What is this repo?
+### What is in this repo?
 
 Machine Learning notes on models written in C: (DOUBLE, OR, AND, NAND, XOR)
 
