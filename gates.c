@@ -34,14 +34,6 @@ sample nand_train[] = {
   {1, 1, 0},
 };
 
-// XOR-gate
-sample xor_train[] = {
-  {0, 0, 0},
-  {1, 0, 1},
-  {0, 1, 1},
-  {1, 1, 0},
-};
-
 sample *train = nand_train;
 size_t train_count = 4;
 

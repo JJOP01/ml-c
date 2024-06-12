@@ -10,8 +10,8 @@ You provide this untrained model, along with its behavioural description, to a l
 
 ### What is this repo?
 
-Machine Learning notes on models written in C: {DOUBLE, OR, AND, NAND}
+Machine Learning notes on models written in C: (DOUBLE, OR, AND, NAND, XOR)
 
 ### TODO
 
-- implement XOR gate
+- explain each model
