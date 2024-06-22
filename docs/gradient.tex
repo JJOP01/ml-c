@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \usepackage{amsmath}
+\numberwithin{equation}{subsection}
 
 \begin{document}
 \section{Gradient Descent}
@@ -40,18 +41,19 @@
   \partial_bC &= \frac{1}{n} \sum_{i=0}^{n}2(a_i-z_i)a_i(1-a_i)
 \end{align}
 
-\subsection{Two Neuron Model with 1 input}
+\subsection{2 Neuron Model with 1 input - Forward Pass}
 
 \begin{align}
-  a_i^{(1)} &= \sigma(x_i w^{(1)} + b^{(1)}) \\  
-  a^{(1)} &= \sigma(xw^{(1)} + b^{(1)}) \\
+  a_i^{(1)} &= \sigma(x_i w^{(1)} + b^{(1)}) \\
+  \partial_{w^{(1)}}a_i^{(i)} &= 2(\partial_{a^{(1)}}C^{(2)})x_i \\
+  \partial_{b^{(1)}}a_i^{(i)} &= 2(\partial_{a^{(1)}}C^{(2)}) \\
   a^{(2)} &= \sigma(a^{(1)}w^{(2)} + b^{(2)}) \\
   \partial_{w^{(2)}}a_i^{(2)} &= a_i^{(2)}(1-a_i^{(2)})a_i^{(1)} \\  
   \partial_{b^{(2)}}a_i^{(2)} &= a_i^{(2)}(1-a_i^{(2)}) \\
   \partial_{a_i^{(1)}}a_i^{(2)} &= a_i^{(2)}(1-a_i^{(2)})w^{(2)}
 \end{align}
 
-\subsection{Back-Propagation}
+\subsection{2 Neuron Model with 1 input - Back-Propagation}
 \begin{align}
   C^{(2)} &= \frac{1}{n}\sum_{i=1}^{n}(a_i^{(2)} - y_i)^2 \\
   \partial_{w^{(2)}}C^{(2)} &= \frac{1}{n}\sum_{i=1}^{n} \partial_{w^{(2)}} ((a_i^{(2)} - y_i)^2) \\
@@ -64,8 +66,28 @@
   \partial_{w^{(1)}}C^{(1)} &= \partial_{w^{(1)}}\left(\frac{1}{n}\sum_{i=1}^{n}  (a_i^{(1)} - e_i)^2\right) \\
           &= \frac{1}{n}\sum_{i=1}^{n} \partial_{w^{(1)}}\left((a_i^{(1)} - e_i)^2\right) \\
             &= \frac{1}{n}\sum_{i=1}^{n} 2(a_i^{(1)} - e_i) \partial_{w^{(1)}}a_i^{(i)}\\
-            &= \frac{1}{n}\sum_{i=1}^{n} 2(\partial_{a^{(1)}}C^{(2)})x_i \\  
-  \partial_{b^{(1)}}C^{(1)} &= \frac{1}{n}\sum_{i=1}^{n} 2(\partial_{a^{(1)}}C^{(2)})x_i
+            &= \frac{1}{n}\sum_{i=1}^{n} 2(\partial_{a_i^{(1)}}C^{(2)})x_i \\  
+  \partial_{b^{(1)}}C^{(1)} &= \frac{1}{n}\sum_{i=1}^{n} 2(\partial_{a_i^{(1)}}C^{(2)})
+\end{align}
+
+\subsection{Forward Pass (general)}
+
+Let $a_{i}^{(0)}$ equal $x_i$
+\begin{align}
+  a^{(l)} &= \sigma(a^{(l-1)}w^{(l)} + b^{(l)}) \\
+  \partial_{w^{(l)}}a_i^{(l)} &= a_i^{(l)}(1-a_i^{(l)})a_i^{(l-1)} \\  
+  \partial_{b^{(l)}}a_i^{(l)} &= a_i^{(l)}(1-a_i^{(l)}) \\
+  \partial_{a_i^{(l-1)}}a_i^{(l)} &= a_i^{(l)}(1-a_i^{(l)})w^{(l)}
+\end{align}
+
+\subsection{Back-Propagation (general)}
+
+Let's denote $a_{i}^{m} - y_i$ as $\partial_{a_i^{(m)}}C^{(m+1)}$
+\begin{align}
+  C^{(l)} &= \frac{1}{n}\sum_{i=1}^{n}(a_i^{(l)} - e_i)^2 \\
+  \partial_{w^{(l)}}C^{(l)} &= \frac{1}{n}\sum_{i=1}^{n} 2(\partial_{a_i^{(l)}}C^{(l+1)})x_i \\
+  \partial_{b^{(l)}}C^{(l)} &= \frac{1}{n}\sum_{i=1}^{n} 2(\partial_{a_i^{(l)}}C^{(l+1)}) \\
+  \partial_{a_i^{(l-1)}}C^{(l)} &= \frac{1}{n}\sum_{i=1}^{n}2(a_i^{(l)}-y_i)a_i^{(l)}(1-a_i^{(l)})w^{(l)}
 \end{align}
 
 \end{document}
