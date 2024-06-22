@@ -85,8 +85,8 @@ Let $a_{i}^{(0)}$ equal $x_i$
 Let's denote $a_{i}^{m} - y_i$ as $\partial_{a_i^{(m)}}C^{(m+1)}$
 \begin{align}
   C^{(l)} &= \frac{1}{n}\sum_{i=1}^{n}(a_i^{(l)} - e_i)^2 \\
-  \partial_{w^{(l)}}C^{(l)} &= \frac{1}{n}\sum_{i=1}^{n} 2(\partial_{a_i^{(l)}}C^{(l+1)})x_i \\
-  \partial_{b^{(l)}}C^{(l)} &= \frac{1}{n}\sum_{i=1}^{n} 2(\partial_{a_i^{(l)}}C^{(l+1)}) \\
+  \partial_{w^{(l)}}C^{(l)} &= \frac{1}{n}\sum_{i=1}^{n} 2(\partial_{a_i^{(l)}}C^{(l+1)})a_i^{(l)}(1-a_i^{(l)})x_i \\
+  \partial_{b^{(l)}}C^{(l)} &= \frac{1}{n}\sum_{i=1}^{n} 2(\partial_{a_i^{(l)}}C^{(l+1)})a_i^{(l)}(1-a_i^{(l)}) \\
   \partial_{a_i^{(l-1)}}C^{(l)} &= \frac{1}{n}\sum_{i=1}^{n}2(a_i^{(l)}-y_i)a_i^{(l)}(1-a_i^{(l)})w^{(l)}
 \end{align}
 
