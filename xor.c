@@ -67,7 +67,7 @@ sample nor_train[] = {
 sample *train = xor_train;
 size_t train_count = 4;
 
-float loss(Xor m)
+float cost(Xor m)
 {
     float result = 0.0f;
     for (size_t i = 0; i < train_count; ++i) {
@@ -131,52 +131,52 @@ Xor learn(Xor m, Xor g, float rate)
 Xor finite_diff(Xor m, float eps)
 {
     Xor g;
-    float c = loss(m);
+    float c = cost(m);
     float saved;
 
     saved = m.or_w1;
     m.or_w1 += eps;
-    g.or_w1 = (loss(m) - c)/eps;
+    g.or_w1 = (cost(m) - c)/eps;
     m.or_w1 = saved;
 
     saved = m.or_w2;
     m.or_w2 += eps;
-    g.or_w2 = (loss(m) - c)/eps;
+    g.or_w2 = (cost(m) - c)/eps;
     m.or_w2 = saved;
 
     saved = m.or_b;
     m.or_b += eps;
-    g.or_b = (loss(m) - c)/eps;
+    g.or_b = (cost(m) - c)/eps;
     m.or_b = saved;
 
     saved = m.nand_w1;
     m.nand_w1 += eps;
-    g.nand_w1 = (loss(m) - c)/eps;
+    g.nand_w1 = (cost(m) - c)/eps;
     m.nand_w1 = saved;
 
     saved = m.nand_w2;
     m.nand_w2 += eps;
-    g.nand_w2 = (loss(m) - c)/eps;
+    g.nand_w2 = (cost(m) - c)/eps;
     m.nand_w2 = saved;
 
     saved = m.nand_b;
     m.nand_b += eps;
-    g.nand_b = (loss(m) - c)/eps;
+    g.nand_b = (cost(m) - c)/eps;
     m.nand_b = saved;
 
     saved = m.and_w1;
     m.and_w1 += eps;
-    g.and_w1 = (loss(m) - c)/eps;
+    g.and_w1 = (cost(m) - c)/eps;
     m.and_w1 = saved;
 
     saved = m.and_w2;
     m.and_w2 += eps;
-    g.and_w2 = (loss(m) - c)/eps;
+    g.and_w2 = (cost(m) - c)/eps;
     m.and_w2 = saved;
 
     saved = m.and_b;
     m.and_b += eps;
-    g.and_b = (loss(m) - c)/eps;
+    g.and_b = (cost(m) - c)/eps;
     m.and_b = saved;
 
     return g;
@@ -193,9 +193,9 @@ int main(void)
     for (size_t i = 0; i < 100*1000; ++i) {
         Xor g = finite_diff(m, eps);
         m = learn(m, g, rate);
-        // printf("loss = %f\n", loss(m));
+        // printf("cost = %f\n", cost(m));
     }
-    printf("\"XOR\" output: loss = %f\n", loss(m));
+    printf("\"XOR\" output: cost = %f\n", cost(m));
     printf("------------------------------\n");
     for (size_t i = 0; i < 2; ++i) {
         for (size_t j = 0; j < 2; ++j) {

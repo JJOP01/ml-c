@@ -2,3 +2,5 @@ double
 gates
 xor
 *.txt
+*.log
+*.aux
